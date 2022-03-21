@@ -1,0 +1,4 @@
+.wp-block-latest-comments__comment-date {
+	color: var(--wp--preset--color--primary);
+	font-size: var(--wp--preset--font-size--small);
+}
