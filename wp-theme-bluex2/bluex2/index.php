@@ -5,7 +5,6 @@ Template name: index
 
 get_header();
 if (have_posts()) {
-    echo "<main>\n";
     while (have_posts()) {
         the_post();
         get_template_part(
@@ -14,6 +13,5 @@ if (have_posts()) {
         );
     }
     the_post_navigation();
-    echo "</main>\n";
 }
 get_footer();

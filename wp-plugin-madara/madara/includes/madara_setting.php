@@ -1,4 +1,5 @@
 <?php
+
 if (!class_exists('Madara_Setting')) {
 
 	class Madara_Setting

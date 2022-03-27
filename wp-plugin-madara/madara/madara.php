@@ -10,17 +10,20 @@
 
 if (!class_exists('Madara_Main')) {
 
+	require_once('includes/madara_acf.php');
 	require_once('includes/madara_setting.php');
 
 	class Madara_Main
 	{
 		public function __construct()
 		{
+			$this->acf = new Madara_Acf();
 			$this->setting = new Madara_Setting();
 		}
 
 		function init()
 		{
+			$this->acf->init();
 			$this->setting->init();
 		}
 

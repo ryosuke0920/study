@@ -5,3 +5,19 @@ Version: 1.0.0
 Requires at least: 5.9
 Requires PHP: 7.4
 */
+
+* {
+	margin: 0;
+}
+:root {
+	background-color: #EEE;
+}
+
+.site-main {
+	width: 1200;
+	background-color: white;
+}
+
+article h1, article h2, article h3, article h4, article h5, article h6, article div, article p, article {
+	margin-bottom: 10px;
+}
