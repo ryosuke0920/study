@@ -1,6 +1,6 @@
 <?php
 
-if (!class_exists('Bluex2_Acf') && function_exists('acf_add_local_field_group')) {
+if (function_exists('acf_add_local_field_group')) {
 
 	class Bluex2_Acf
 	{
@@ -10,6 +10,7 @@ if (!class_exists('Bluex2_Acf') && function_exists('acf_add_local_field_group'))
 		const FIELD_NAME_SAMPLE_TEXTBOX = 'sample_textbox';
 		const FIELD_NAME_SAMPLE_TEXTAREA = 'sample_textarea';
 		const FIELD_NAME_CHECKBOX = 'checkbox';
+		const FIELD_NAME_IMAGE = 'image';
 
 		function __construct()
 		{
@@ -43,6 +44,9 @@ if (!class_exists('Bluex2_Acf') && function_exists('acf_add_local_field_group'))
 
 		function load_value_checkbox($value, $post_id, $field)
 		{
+			if ($value === null) {
+				$value = [];
+			}
 			return $value;
 		}
 	}

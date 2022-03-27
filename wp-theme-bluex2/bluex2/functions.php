@@ -2,7 +2,9 @@
 
 if (!class_exists('BB_Theme_FunctionsClass')) {
 
+	require_once 'classes/util.php';
 	require_once 'classes/acf.php';
+	require_once 'classes/tag.php';
 
 	class Bluex2_Functions
 	{
