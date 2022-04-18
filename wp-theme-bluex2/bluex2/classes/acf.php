@@ -11,6 +11,7 @@ if (function_exists('acf_add_local_field_group')) {
 		const FIELD_NAME_SAMPLE_TEXTAREA = 'sample_textarea';
 		const FIELD_NAME_CHECKBOX = 'checkbox';
 		const FIELD_NAME_IMAGE = 'image';
+		const PAGE_SLUG_HOME = 'home';
 
 		function __construct()
 		{
@@ -30,6 +31,56 @@ if (function_exists('acf_add_local_field_group')) {
 				self::DEFAULT_PRIORITY,
 				3
 			);
+
+			$home_post = get_page_by_path(self::PAGE_SLUG_HOME, OBJECT, ['page']);
+
+			if (function_exists('acf_add_local_field_group') && $home_post->ID) :
+
+				acf_add_local_field_group(array(
+					'key' => 'group_625d586303479',
+					'title' => 'Home Identify',
+					'fields' => array(
+						array(
+							'key' => 'field_625d58876731c',
+							'label' => 'Special Message',
+							'name' => 'special_message',
+							'type' => 'text',
+							'instructions' => '',
+							'required' => 0,
+							'conditional_logic' => 0,
+							'wrapper' => array(
+								'width' => '',
+								'class' => '',
+								'id' => '',
+							),
+							'default_value' => '',
+							'placeholder' => '',
+							'prepend' => '',
+							'append' => '',
+							'maxlength' => '',
+						),
+					),
+					'location' => array(
+						array(
+							array(
+								'param' => 'page',
+								'operator' => '==',
+								'value' => $home_post->ID,
+							),
+						),
+					),
+					'menu_order' => 0,
+					'position' => 'normal',
+					'style' => 'default',
+					'label_placement' => 'top',
+					'instruction_placement' => 'label',
+					'hide_on_screen' => '',
+					'active' => true,
+					'description' => '',
+					'show_in_rest' => 0,
+				));
+
+			endif;
 		}
 
 		function load_value_input_field($value, $post_id, $field)

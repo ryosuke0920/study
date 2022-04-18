@@ -8,10 +8,13 @@
  * Version:           1.0.0
  */
 
+if (!defined('ABSPATH')) exit;
+
 if (!class_exists('Madara_Main')) {
 
-	require_once('includes/madara_acf.php');
-	require_once('includes/madara_setting.php');
+	require_once('classes/acf.php');
+	require_once('classes/setting.php');
+	require_once('classes/schedule.php');
 
 	class Madara_Main
 	{
@@ -19,12 +22,13 @@ if (!class_exists('Madara_Main')) {
 		{
 			$this->acf = new Madara_Acf();
 			$this->setting = new Madara_Setting();
+			$this->schedule = new Madara_Schedule();
 		}
 
 		function init()
 		{
-			$this->acf->init();
 			$this->setting->init();
+			$this->schedule->init();
 		}
 
 		public static function uninstall()
@@ -33,6 +37,5 @@ if (!class_exists('Madara_Main')) {
 		}
 	}
 
-	$madaraMain = new Madara_Main();
-	$madaraMain->init();
+	(new Madara_Main())->init();
 }
