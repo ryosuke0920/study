@@ -23,9 +23,14 @@ module.exports = {
 				test: /\.css$/i,
 				use: ['style-loader', 'css-loader'],
 			},
+			{
+				test: /\.scss$/i,
+				use: ['style-loader', 'css-loader', 'sass-loader'],
+			}
 		],
 	},
 	devServer: {
+		host: '0.0.0.0',
 		static: './dist',
 	},
 	// optimization: {
