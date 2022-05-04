@@ -1,10 +1,37 @@
+//変数宣言
 :root {
-	--menu-width: 80%;
+
+	// 色
+	--base-white: white;
+	--base-black: #333;
+	--base-transparent-black: rgba(0, 0, 0, 0.5);
+	--base-blue: blue;
+
+	--main-font-color: var(--base-black);
+
+	--sub-bg-color: var(--base-blue);
+	--sub-font-color: var(--base-white);
+
+	//ヘッダ
+	--header-bg-color: var(--sub-bg-color);
+	--header-font-color: var(--sub-font-color);
+	--header-height: 64px;
+
+	//フッタ
+	--footer-bg-color: var(--sub-bg-color);
+	--footer-font-color: var(--sub-font-color);
+	--footer-height: 100px;
+
+	//メニュー
+	--menu-floor-bg-color: var(--base-transparent-black);
+	--menu-bg-color: var(--base-white);
+	--menu-width: 60%;
 	--menu-left-hidden: calc(var(--menu-width) * -1);
 	--menu-left-shown: 0;
-	--square-length: 30px;
+	--menu-duration: .25s;
 }
 
+// ノーマライズ
 body,
 p,
 h1,
@@ -15,12 +42,13 @@ h5,
 h6 {
 	margin: 0;
 }
+
 p {
 	margin: 10px 0;
 }
+
 body {
-	color: white;
-	background-color: red;
+	color: var(--main-font-color);
 }
 
 h1,
@@ -37,109 +65,128 @@ h1:before {
 	content: '# ';
 }
 
+// レイアウト
+html,
+body,
+#wrapper {
+	height: 100%;
+}
+
+#header {
+	color: var(--header-font-color);
+	background-color: var(--header-bg-color);
+	height: var(--header-height);
+}
+
+#footer {
+	color: var(--footer-font-color);
+	background-color: var(--footer-bg-color);
+	height: var(--footer-height);
+}
+
+#body {
+	overflow: hidden;
+	height: calc(100% - var(--footer-height) - var(--header-height));
+
+}
+
+.slide-wrapper {
+	display: flex;
+	position: relative;
+	height: 100%;
+}
+
+.win1-stay .slide-wrapper {
+	left: 0;
+}
+
+.win2-stay .slide-wrapper {
+	left: -100%;
+}
+
+.win3-stay .slide-wrapper {
+	left: -200%;
+}
+
+.win1-show .slide-wrapper {
+	animation: .25s forwards win1-show;
+
+	@keyframes win1-show {
+		to {
+			left: 0;
+		}
+	}
+}
+
+.win2-show .slide-wrapper {
+	animation: .25s forwards win2-show;
+
+	@keyframes win2-show {
+		to {
+			left: -100%;
+		}
+	}
+}
+
+.win3-show .slide-wrapper {
+	animation: .25s forwards win3-show;
+
+	@keyframes win3-show {
+		to {
+			left: -200%;
+		}
+	}
+}
+
+.slide-window {
+	min-width: 100%;
+	overflow-y: scroll;
+}
+
+// メニュー
+#menu-floor {
+	display: none;
+}
+
+.menu-show #menu-floor {
+	display: block;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: var(--menu-floor-bg-color);
+}
 
 #menu {
+	background-color: var(--menu-bg-color);
 	position: fixed;
 	top: 0;
 	bottom: 0;
-	left: var(--menu-left-hidden);
 	width: var(--menu-width);
-	background-color: blue;
-}
-
-.menu-show #menu {
-	animation: .25s forwards menu-show-anime;
+	left: var(--menu-left-hidden);
 }
 
 .menu-hide #menu {
-	left: var(--menu-left-shown);
-	animation: .25s forwards menu-hide-anime;
+	animation: var(--menu-duration) forwards menu-hide;
 }
 
-@keyframes menu-show-anime {
+.menu-show #menu {
+	animation: var(--menu-duration) forwards menu-show;
+}
+
+@keyframes menu-show {
 	to {
 		left: var(--menu-left-shown);
 	}
 }
 
-@keyframes menu-hide-anime {
+@keyframes menu-hide {
+	from {
+		left: var(--menu-left-shown);
+	}
+
 	to {
 		left: var(--menu-left-hidden)
-	}
-}
-
-.w {
-	border-bottom: 5px solid black;
-
-	.w300 {
-		width: 300px;
-	}	
-	.w400 {
-		width: 400px;
-	}
-	.w500 {
-		width: 500px;
-	}	
-	.w600 {
-		width: 600px;
-	}
-	.w700 {
-		width: 700px;
-	}	
-	.w800 {
-		width: 800px;
-	}
-	.w900 {
-		width: 900px;
-	}
-}
-
-.square10 {
-	position: relative;
-	top: 0;
-	left: 0;
-	color: black;
-	margin: var(--square-length);
-	padding: var(--square-length);
-	border: solid var(--square-length) black;
-	background-color: #EEE;
-	width: var(--square-length);
-	height: var(--square-length);
-
-	// animation-name: square-1, square-2, square-3, square-4;
-	animation-duration: 5s, 1s;
-	animation-iteration-count: infinite;
-	animation-direction: alternate;
-
-	@keyframes square-1 {
-		to {
-			left: 300px;
-		}
-	}
-	@keyframes square-2 {
-		to {
-			top: 300px;
-		}
-	}
-	@keyframes square-3 {
-		to {
-			font-size: 100px;
-		}
-	}
-	@keyframes square-4 {
-		to {
-			transform: rotate(360deg);
-		}
-	}
-}
-
-@media(min-width: 600px) {
-	body {
-		background-color: green;
-	}
-
-	#content {
-		float: left;
-		width: 60%;
 	}
 }
