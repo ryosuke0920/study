@@ -1,14 +1,17 @@
 //変数宣言
 :root {
 
-	// 色
+	// 基本
 	--base-white: white;
 	--base-black: #333;
 	--base-transparent-black: rgba(0, 0, 0, 0.5);
 	--base-blue: blue;
+	--base-duration: .25s;
+	--base-margin: 10px;
 
+	// コンセプト
+	--main-bg-color: var(--base-white);
 	--main-font-color: var(--base-black);
-
 	--sub-bg-color: var(--base-blue);
 	--sub-font-color: var(--base-white);
 
@@ -28,7 +31,11 @@
 	--menu-width: 60%;
 	--menu-left-hidden: calc(var(--menu-width) * -1);
 	--menu-left-shown: 0;
-	--menu-duration: .25s;
+	--menu-duration: var(--base-duration);
+
+	//メニューアイテム
+	--menu-item-margin: var(--base-margin);
+	--menu-item-duration: var(--base-duration);
 }
 
 // ノーマライズ
@@ -188,5 +195,41 @@ body,
 
 	to {
 		left: var(--menu-left-hidden)
+	}
+}
+
+.menu-item {
+	cursor: pointer;
+	padding: var(--menu-item-margin);
+	animation: var(--menu-item-duration) forwards menu-normal;
+
+}
+.menu-item:hover {
+	animation: var(--menu-item-duration) forwards menu-hover;
+}
+
+@keyframes menu-normal {
+	from {
+		padding-left: calc(var(--menu-item-margin) + 1em);
+		background-color: var(--main-font-color);
+		color: var(--main-bg-color);	
+	}
+	to {
+		padding-left: var(--menu-item-margin);
+		background-color: var(--main-bg-color);
+		color: var(--main-font-color);
+	}
+}
+
+@keyframes menu-hover {
+	from {
+		padding-left: var(--menu-item-margin);
+		background-color: var(--main-bg-color);
+		color: var(--main-font-color);
+	}
+	to {
+		padding-left: calc(var(--menu-item-margin) + 1em);
+		background-color: var(--main-font-color);
+		color: var(--main-bg-color);
 	}
 }
