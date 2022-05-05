@@ -2,7 +2,8 @@ import './style.scss';
 
 
 const ROOT = document.querySelector(':root');
-const MENU_FLOOR = document.querySelector('#menu-floor');
+const HEAD = ROOT.querySelector('head');
+const MENU_FLOOR = ROOT.querySelector('#menu-floor');
 
 const MENU_BUTTON_CLASS = 'menu-button';
 const MENU_SHOW_CLASS = 'menu-show';
@@ -19,6 +20,8 @@ const WIN3_SHOW_CLASS = 'win3-show';
 class MyFrame {
 
 	init(){
+		ROOT.setAttribute('onclick', 'void(0)');
+		ROOT.classList.add(WIN1_SHOW_CLASS);
 		window.addEventListener('click', this.window_click.bind(this) );
 
 		ROOT.addEventListener('touchstart', this.window_touch.bind(this) );
