@@ -8,6 +8,7 @@
 	--base-blue: blue;
 	--base-duration: .25s;
 	--base-margin: 10px;
+	--base-padding: var(--base-margin);
 
 	// コンセプト
 	--main-bg-color: var(--base-white);
@@ -25,10 +26,14 @@
 	--footer-font-color: var(--sub-font-color);
 	--footer-height: 100px;
 
+	//スライドウィンドウ
+	--slide-duration: var(--base-duration);
+
 	//メニュー
 	--menu-floor-bg-color: var(--base-transparent-black);
 	--menu-bg-color: var(--base-white);
 	--menu-width: 60%;
+	--menu-height: calc(100% - var(--footer-height));
 	--menu-left-hidden: calc(var(--menu-width) * -1);
 	--menu-left-shown: 0;
 	--menu-duration: var(--base-duration);
@@ -36,6 +41,7 @@
 	//メニューアイテム
 	--menu-item-margin: var(--base-margin);
 	--menu-item-duration: var(--base-duration);
+	--menu-item-padding-hover: calc(var(--menu-item-margin) + 1em);
 }
 
 // ノーマライズ
@@ -101,48 +107,19 @@ body,
 	display: flex;
 	position: relative;
 	height: 100%;
-}
-
-.win1-stay .slide-wrapper {
-	left: 0;
-}
-
-.win2-stay .slide-wrapper {
-	left: -100%;
-}
-
-.win3-stay .slide-wrapper {
-	left: -200%;
+	transition: left var(--slide-duration);
 }
 
 .win1-show .slide-wrapper {
-	animation: .25s forwards win1-show;
-
-	@keyframes win1-show {
-		to {
-			left: 0;
-		}
-	}
+	left: 0;
 }
 
 .win2-show .slide-wrapper {
-	animation: .25s forwards win2-show;
-
-	@keyframes win2-show {
-		to {
-			left: -100%;
-		}
-	}
+	left: -100%;
 }
 
 .win3-show .slide-wrapper {
-	animation: .25s forwards win3-show;
-
-	@keyframes win3-show {
-		to {
-			left: -200%;
-		}
-	}
+	left: -200%;
 }
 
 .slide-window {
@@ -152,84 +129,43 @@ body,
 
 // メニュー
 #menu-floor {
-	display: none;
-}
-
-.menu-show #menu-floor {
-	display: block;
 	position: fixed;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
 	background-color: var(--menu-floor-bg-color);
+	display: none;
+}
+
+.menu-show #menu-floor {
+	display: block;
 }
 
 #menu {
 	background-color: var(--menu-bg-color);
 	position: fixed;
 	top: 0;
-	bottom: 0;
 	width: var(--menu-width);
+	height: var(--menu-height);
 	left: var(--menu-left-hidden);
-}
-
-.menu-hide #menu {
-	animation: var(--menu-duration) forwards menu-hide;
+	transition: left, var(--menu-duration);
 }
 
 .menu-show #menu {
-	animation: var(--menu-duration) forwards menu-show;
-}
-
-@keyframes menu-show {
-	to {
-		left: var(--menu-left-shown);
-	}
-}
-
-@keyframes menu-hide {
-	from {
-		left: var(--menu-left-shown);
-	}
-
-	to {
-		left: var(--menu-left-hidden)
-	}
+	left: var(--menu-left-shown);
 }
 
 .menu-item {
 	cursor: pointer;
 	padding: var(--menu-item-margin);
-	animation: var(--menu-item-duration) forwards menu-normal;
-
+	transition-property: padding-left, background-color, color;
+	transition-duration: var(--menu-item-duration);
 }
+
 .menu-item:hover {
-	animation: var(--menu-item-duration) forwards menu-hover;
+	padding-left: var(--menu-item-padding-hover);
+	background-color: var(--main-font-color);
+	color: var(--main-bg-color);
 }
 
-@keyframes menu-normal {
-	from {
-		padding-left: calc(var(--menu-item-margin) + 1em);
-		background-color: var(--main-font-color);
-		color: var(--main-bg-color);	
-	}
-	to {
-		padding-left: var(--menu-item-margin);
-		background-color: var(--main-bg-color);
-		color: var(--main-font-color);
-	}
-}
-
-@keyframes menu-hover {
-	from {
-		padding-left: var(--menu-item-margin);
-		background-color: var(--main-bg-color);
-		color: var(--main-font-color);
-	}
-	to {
-		padding-left: calc(var(--menu-item-margin) + 1em);
-		background-color: var(--main-font-color);
-		color: var(--main-bg-color);
-	}
-}
