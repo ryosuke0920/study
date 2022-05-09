@@ -36,49 +36,99 @@ if (function_exists('acf_add_local_field_group')) {
 
 			if (function_exists('acf_add_local_field_group') && $home_post->ID) :
 
-				acf_add_local_field_group(array(
-					'key' => 'group_625d586303479',
-					'title' => 'Home Identify',
-					'fields' => array(
-						array(
-							'key' => 'field_625d58876731c',
-							'label' => 'Special Message',
-							'name' => 'special_message',
-							'type' => 'text',
-							'instructions' => '',
-							'required' => 0,
-							'conditional_logic' => 0,
-							'wrapper' => array(
-								'width' => '',
-								'class' => '',
-								'id' => '',
-							),
-							'default_value' => '',
-							'placeholder' => '',
-							'prepend' => '',
-							'append' => '',
-							'maxlength' => '',
-						),
-					),
-					'location' => array(
-						array(
+				acf_add_local_field_group(
+					array(
+						'key' => 'group_625d586303479',
+						'title' => 'Home Identify',
+						'fields' => array(
 							array(
-								'param' => 'page',
-								'operator' => '==',
-								'value' => $home_post->ID,
+								'key' => 'field_625d58876731c',
+								'label' => 'Home Message',
+								'name' => 'home_message',
+								'type' => 'text',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'default_value' => '',
+								'placeholder' => '',
+								'prepend' => '',
+								'append' => '',
+								'maxlength' => '',
+							),
+							array(
+								'key' => 'field_625d698d52b21',
+								'label' => 'Home Image',
+								'name' => 'home_image',
+								'type' => 'image',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'return_format' => 'url',
+								'preview_size' => 'medium',
+								'library' => 'all',
+								'min_width' => '',
+								'min_height' => '',
+								'min_size' => '',
+								'max_width' => '',
+								'max_height' => '',
+								'max_size' => '',
+								'mime_types' => '',
+							),
+							array(
+								'key' => 'field_625d6de4588d0',
+								'label' => 'Elastic Image',
+								'name' => 'elastic_image',
+								'type' => 'image',
+								'instructions' => '',
+								'required' => 0,
+								'conditional_logic' => 0,
+								'wrapper' => array(
+									'width' => '',
+									'class' => '',
+									'id' => '',
+								),
+								'return_format' => 'id',
+								'preview_size' => 'medium',
+								'library' => 'all',
+								'min_width' => '',
+								'min_height' => '',
+								'min_size' => '',
+								'max_width' => '',
+								'max_height' => '',
+								'max_size' => '',
+								'mime_types' => '',
 							),
 						),
+						'location' => array(
+							array(
+								array(
+									'param' => 'page',
+									'operator' => '==',
+									'value' => $home_post->ID,
+								),
+							),
+						),
+						'menu_order' => 0,
+						'position' => 'normal',
+						'style' => 'default',
+						'label_placement' => 'top',
+						'instruction_placement' => 'label',
+						'hide_on_screen' => '',
+						'active' => true,
+						'description' => '',
+						'show_in_rest' => 0,
 					),
-					'menu_order' => 0,
-					'position' => 'normal',
-					'style' => 'default',
-					'label_placement' => 'top',
-					'instruction_placement' => 'label',
-					'hide_on_screen' => '',
-					'active' => true,
-					'description' => '',
-					'show_in_rest' => 0,
-				));
+				);
 
 			endif;
 		}
