@@ -4,6 +4,7 @@ import './style.scss';
 const ROOT = document.querySelector(':root');
 const HEAD = ROOT.querySelector('head');
 const MENU_FLOOR = ROOT.querySelector('#menu-floor');
+const SLIDE_WRAPPER = ROOT.querySelector('#slide-wrapper');
 
 const MENU_BUTTON_CLASS = 'menu-button';
 const MENU_SHOW_CLASS = 'menu-show';
@@ -24,10 +25,8 @@ class MyFrame {
 		ROOT.classList.add(WIN1_SHOW_CLASS);
 		window.addEventListener('click', this.window_click.bind(this) );
 
-		ROOT.addEventListener('touchstart', this.window_touch.bind(this) );
-		ROOT.addEventListener('touchend', this.window_touch.bind(this) );
-		ROOT.addEventListener('touchmove', this.window_touch.bind(this) );
-		ROOT.addEventListener('touchcancel', this.window_touch.bind(this) );
+		window.addEventListener('touchstart', this.window_touchstart.bind(this) );
+		window.addEventListener('touchmove', this.window_touchmove.bind(this) );
 	}
 
 	window_click(e){
@@ -66,8 +65,36 @@ class MyFrame {
 		}
 	}
 
-	window_touch(e){
-		console.log(e);
+	window_touchstart(e){
+		this.setTouch(e.touches[0]);
+	}
+
+	window_touchmove(e){
+		const oldTouch = this.getTouch();
+		const newTouch = e.touches[0];
+		this.setTouch(newTouch);
+		this.moveSlideWrapper(newTouch.clientX - oldTouch.clientX);
+	}
+
+	setTouch(touch){
+		this.touch = touch;
+	}
+
+	getTouch(){
+		return this.touch;
+	}
+
+	moveSlideWrapper(dx){
+		let x = 0;
+		if(SLIDE_WRAPPER.style.left) {
+			const found = SLIDE_WRAPPER.style.left.match(/-?\d+/);
+			if( found ){
+				x = parseInt(found[0], 10);
+			}	
+		}
+		x += dx;
+		SLIDE_WRAPPER.style.left = x + "px";
+		// console.log(SLIDE_WRAPPER.style.left);
 	}
 
 	slide_win(to){
@@ -75,6 +102,7 @@ class MyFrame {
 		ROOT.classList.remove(WIN2_SHOW_CLASS);
 		ROOT.classList.remove(WIN3_SHOW_CLASS);
 		ROOT.classList.add(to);
+		SLIDE_WRAPPER.style.left = null;
 	}
 }
 

@@ -1,41 +1,197 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Test HTML, CSS, JavaScript.</title>
 	<style>
+		html,
+		body,
+		main,
+		section,
+		h1,
+		h2,
+		div,
+		p {
+			margin: 0;
+			margin-top: 10px;
+			margin-bottom: 20px;
+		}
+
+		article {
+			margin: 10px;
+		}
+
+		article>h1{
+			font-size: 40px;
+		}
+
+		section>h1
+		{
+			margin-bottom: 20px;
+			border-bottom: solid 1px black;
+		}
+
 		#flex1 {
 			display: flex;
 		}
+
 		#flex2 {
 			display: flex;
 			gap: 1em;
 		}
+
 		#flex2 div {
 			flex: 1;
 		}
+
+		.square {
+			color: white;
+			background-color: blue;
+			border-bottom: solid 3px darkblue;
+			border-right: solid 3px darkblue;
+			width: 50px;
+			height: 50px;
+		}
 	</style>
 </head>
+
 <body>
 	<main>
-		<section>
-			<h1>flex</h1>
-			<div id="flex1">
-				<div>1</div>
-				<div>2</div>
-				<div>3</div>
-			</div>
-		</section>
-		<section>
-			<h1>flex</h1>
-			<div id="flex2">
-				<div>1</div>
-				<div>2</div>
-				<div>3</div>
-			</div>
-		</section>
+		<article>
+			<h1>Test HTML, CSS, JavaScript.</h1>
+			<section>
+				<h1>Web Intents</h1>
+
+				<h2>Tweet</h2>
+				<p><a target="_blank" href="https://twitter.com/intent/tweet?text=テキスト&url=http://www.google.co.jp/&via=Twitter&nature,sunset&in_reply_to=1519526643173588992&related=twitter%3ATwitter%20News,twitterapi%3ATwitter%20API%20News">ツイート</a>します。</p>
+				<!-- <p>
+					<script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
+					<a href="https://twitter.com/intent/tweet?in_reply_to=463440424141459456">Reply</a>
+					<a href="https://twitter.com/intent/retweet?tweet_id=463440424141459456">Retweet</a>
+					<a href="https://twitter.com/intent/like?tweet_id=463440424141459456">Like</a>	
+				</p> -->
+			</section>
+			<section>
+				<h1>CSS trasforms</h1>
+
+				<h2>Rotaring</h2>
+
+				<h3>transform: rotate(90deg);</h3>
+				<div class="square" style="transform: rotate(90deg);">ABC</div>
+
+				<h3>transform: rotate(90deg); transform-origin:bottom left;</h3>
+				<div class="square" style="transform: rotate(30deg); transform-origin:bottom left;">ABC</div>
+				<p>marginは元の位置を基準にして働く。</p>
+
+			</section>
+
+			<section>
+				<h1>window.innerX (This isn't Viewport width or height.)</h1>
+				<p>window.innerWidth =
+					<script>document.write(window.innerWidth);</script>
+				</p>
+				<p>window.innerHeight =
+					<script>document.write(window.innerHeight);</script>
+				</p>
+			</section>
+			<section>
+				<h1>square</h1>
+				<p>width:1px; height:1px;</p>
+				<div style="width:1px; height:1px; background-color: black;"></div>
+
+				<p>width:0.25px; height:0.25px;</p>
+				<div style="width:0.25px; height:0.25px; background-color: black;"></div>
+
+				<p>width:1cm; height:1cm;</p>
+				<div style="width:1cm; height:1cm; background-color: black;"></div>
+
+				<p>width:1in; height:1in;</p>
+				<div style="width:1in; height:1in; background-color: black;"></div>
+
+				<p>width:10px; height:10px;</p>
+				<div style="width:10px; height:10px; background-color: black;"></div>
+
+				<p>width:100%; height:0.25px;</p>
+				<div style="width:100%; height:0.25px; background-color: black;"></div>
+
+				<p>width:50%; height:1px;</p>
+				<div id="line1" style="width:50%; height:1px; background-color: black;"></div>
+				<div>('#line1').clientWidth =
+					<script>
+						document.write(document.querySelector('#line1').clientWidth);
+					</script>
+				</div>
+
+				<p>width:100%; height:1px;</p>
+				<div id="line2" style="width:100%; height:1px; background-color: black;"></div>
+				<div>('#line2').clientWidth =
+					<script>
+						document.write(document.querySelector('#line2').clientWidth);
+					</script>
+				</div>
+			</section>
+			<section>
+				<h1>flex</h1>
+				<div id="flex1">
+					<div>1</div>
+					<div>2</div>
+					<div>3</div>
+				</div>
+			</section>
+			<section>
+				<h1>flex</h1>
+				<div id="flex2">
+					<div>1</div>
+					<div>2</div>
+					<div>3</div>
+				</div>
+			</section>
+			<section>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+			</section>
+			<scriot id="intersection">
+				<h1>Intersection</h1>
+			</scriot>
+		</article>
+
 	</main>
+	<script>
+		const io = new IntersectionObserver(
+			(entries, observer) => {
+				console.log(entries);
+			}
+		);
+		io.observe(document.querySelector('#intersection'));
+	</script>
 </body>
+
 </html>
