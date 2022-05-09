@@ -30,7 +30,6 @@ class MyFrame {
 	}
 
 	window_click(e){
-		console.log(e);
 		const classList = e.target.classList;
 		const id = e.target.id;
 

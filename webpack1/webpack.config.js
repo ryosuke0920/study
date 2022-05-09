@@ -5,11 +5,18 @@ module.exports = {
 	mode: 'development',
 	entry: {
 		index: './src/index.js',
+		swiper: './src/swiper.js',
 	},
 	devtool: 'inline-source-map',
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: 'src/index.html',
+			chunks: ['index'],
+		}),
+		new HtmlWebpackPlugin({
+			template: 'src/swiper.html',
+			filename: 'swiper.html',
+			chunks: ['swiper'],
 		}),
 	],
 	output: {
