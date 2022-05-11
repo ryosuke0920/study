@@ -1,4 +1,11 @@
 .swiper {
 	background-color: #DDD;
-	height: 200px;
+	height: 400px;
+	width: 400px;
+}
+
+.swiper-slide img {
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
 }

@@ -1,7 +1,8 @@
-import Swiper, { Navigation, Pagination } from 'swiper';
+import Swiper, { Navigation, Pagination, Scrollbar } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 import './swiper.scss';
 
@@ -11,15 +12,15 @@ class MyFrame {
 	}
 	init_swiper(){
 		const swiper = new Swiper('.swiper', {
-			modules: [Navigation, Pagination],
+			modules: [Navigation, Pagination, Scrollbar],
 
 			// Optional parameters
-			loop: true,
+			// loop: true,
 		  
 			// If we need pagination
-			pagination: {
-			  el: '.swiper-pagination',
-			},
+			// pagination: {
+			//   el: '.swiper-pagination',
+			// },
 		  
 			// Navigation arrows
 			navigation: {
