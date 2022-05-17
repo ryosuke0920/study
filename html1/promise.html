@@ -11,77 +11,65 @@
 <body>
 	<script>
 		class Hoge {
+
+			init() {
+				window.addEventListener('unhandledrejection', this.unhandledrejection.bind(this));
+				window.addEventListener('rejectionhandled', this.rejectionhandled.bind(this));
+			}
+
+			unhandledrejection(e) {
+				console.log('失敗が確定した時には、受け止めるcatchがありませんでした。');
+			}
+
+			rejectionhandled(e) {
+				console.log('すでに失敗した後ですが、catchで受け止めされました。');
+			}
+
 			main() {
 				console.log('main');
-				const url = 'promise.json';
+				const url1 = 'promise.json';
 				const url2 = 'http://google.comm/promise.json';
 
-				// this.fetch(url);
-
-				// this.fetch2(url).then(e=>{
-				// 	console.log(e);
-				// });
-
-				// this.fetch3(url).then(e=>console.log(e));
-
-				// this.fetch4(url, url2).then(e=>{
-				// 	console.log(e);
-				// });
-
-				// this.wait(3).then(()=>{console.log("3")});
+				let p = fetch(url2);
+				setTimeout(()=>{
+					p.catch(()=>{});
+				}, 1000);
 			}
 
-			async wait(sec){
-				return new Promise(resolve=>{
-					setTimeout( resolve, sec * 1000);
-				})
-			}
-
-			async fetch4(url, url2){
-				const list = await Promise.all([fetch(url), fetch(url2)]).then(arr=>{
-					return Promise.all([arr[0].json(), arr[1].json()]);
-				});
-				return list[0].data.concat(list[1].data);
-			}
-
-			async fetch3(url){
-				return "Hello";
-			}
-
-			async fetch2(url){
-				try{
+			async fetch2(url) {
+				try {
 					const result = await fetch(url);
 					const json = await result.json();
 					return json.data;
 				}
-				catch(e){
+				catch (e) {
 					console.log('catch');
 					console.log(e);
 				}
-				finally{
+				finally {
 					console.log('finally');
 				}
 			}
 
-			fetch(url){
+			fetch(url) {
 				let promise = fetch(url);
 				promise = this.chain(promise);
-				promise.then(e=>{
+				promise.then(e => {
 					console.log("ok");
 					return e['data'];
-				}).then(e=>{
+				}).then(e => {
 					console.log(e);
 					// return 'successed';
 					throw new Error('errored');
-				}).catch(e=>{
+				}).catch(e => {
 					console.log(e);
 					return "catched.";
-				}).then(e=>{
+				}).then(e => {
 					console.log(e);
 				});
 			}
 
-			chain(promise){
+			chain(promise) {
 				promise = promise.then(
 					e => {
 						console.log('sucess');
@@ -91,15 +79,16 @@
 						console.log('error');
 						// throw new Error("test");
 					},
-				).catch(e=>{
+				).catch(e => {
 					console.log('catch');
-				}).finally(e=>{
+				}).finally(e => {
 					console.log('finally');
 				});
 				return promise;
 			}
 		}
 		const hoge = new Hoge();
+		hoge.init();
 		hoge.main();
 	</script>
 </body>
