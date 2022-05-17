@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Images</title>
+	<style>
+		body, h1, div, section, img {
+			margin: 0;
+			padding: 0;
+			border: none;
+		}
+		body {
+			padding: 10px;
+		}
+		h1, section {
+			padding: 2px;
+			margin-bottom: 10px;
+		}
+		h1 {
+			font-weight: bold;
+		}
+		.image_box {
+			box-shadow: 0 2px 3px rgba(0,0,0,0.06);
+			border: 1px solid rgba(150,150,150,0.3);
+			border-bottom-color: rgba(125,125,125,0.3);
+		}
+		.image_sorce {
+			width: 100%;
+			height: 300px;
+			object-fit: contain;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		<h1>Images</h1>
+		<div id="image_container"></div>
+		<template id="image_template">
+			<section class="image_box">
+				<h1 class="image_title"></h1>
+				<div class="image_wrapper">
+					<img class="image_sorce" loading="lazy">
+				</div>
+			</section>
+		</template>
+	</div>
+	<script>
+		(() => {
+			class Hoge {
+				init() {
+					window.addEventListener('load', this.load.bind(this));
+				}
+
+				load() {
+					this.image_template = document.querySelector('#image_template');
+					this.image_container = document.querySelector('#image_container');
+					this.main({ json: 'har.json' }).catch(e => { console.error(e) });
+				}
+
+				async main(args) {
+					const json = await this.fetchJson(args.json);
+					if (json === false) {
+						return;
+					}
+					for (let i = 0; i < json.log.entries.length; i++) {
+						const entry = json.log.entries[i];
+						if (!entry.hasOwnProperty('request')) {
+							continue;
+						}
+						const request = entry.request;
+						if (!request.hasOwnProperty('url')) {
+							continue;
+						}
+						const url = request.url;
+						this.addImageBox('#image ' + i, url);
+					}
+				}
+
+				async fetchJson(url) {
+					try {
+						const res = await fetch(url, {cache: 'no-cache'});
+						const json = await res.json();
+						return json;
+					}
+					catch (e) {
+						return false;
+					}
+				}
+
+				addImageBox(title, url) {
+					const clone = this.image_template.content.cloneNode(true);
+					clone.querySelector('.image_title').innerText = title;
+					const image = clone.querySelector('.image_sorce');
+					image.setAttribute('title', title);
+					image.setAttribute('alt', title);
+					image.setAttribute('src', url);
+					this.image_container.appendChild(clone);
+				}
+			}
+			const hoge = new Hoge();
+			hoge.init();
+		})();
+	</script>
+</body>
+
+</html>

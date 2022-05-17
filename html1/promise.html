@@ -13,13 +13,39 @@
 		class Hoge {
 			main() {
 				console.log('main');
-				// const url = 'http://google.comm/promise.json';
 				const url = 'promise.json';
+				const url2 = 'http://google.comm/promise.json';
+
 				// this.fetch(url);
 
-				this.fetch2(url).then(e=>{
-					console.log(e);
+				// this.fetch2(url).then(e=>{
+				// 	console.log(e);
+				// });
+
+				// this.fetch3(url).then(e=>console.log(e));
+
+				// this.fetch4(url, url2).then(e=>{
+				// 	console.log(e);
+				// });
+
+				// this.wait(3).then(()=>{console.log("3")});
+			}
+
+			async wait(sec){
+				return new Promise(resolve=>{
+					setTimeout( resolve, sec * 1000);
+				})
+			}
+
+			async fetch4(url, url2){
+				const list = await Promise.all([fetch(url), fetch(url2)]).then(arr=>{
+					return Promise.all([arr[0].json(), arr[1].json()]);
 				});
+				return list[0].data.concat(list[1].data);
+			}
+
+			async fetch3(url){
+				return "Hello";
 			}
 
 			async fetch2(url){
