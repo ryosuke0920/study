@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Menu</title>
+	<style>
+		#menu {
+			position: relative;
+		}
+		#menu ul {
+			transition-property: all;
+			transition-duration: 0.5s;
+			overflow: hidden;
+		}
+		#menu li {
+			white-space: nowrap;
+		}
+		#sub {
+			height: auto;
+		}
+		/* #sub.hide {
+			height: 0;
+		} */
+		#sub2 {
+			background-color: aqua;
+			position:relative;
+			/* top: 0; */
+			height:100px;
+		}
+		#sub2.hide {
+			/* top: -100px; */
+			height:0;
+		}
+
+	</style>
+	<script>
+		window.addEventListener('click', e=>{
+			console.log(e);
+			if(e.target.classList.contains('menu')){
+				console.log('menu');
+				const nodes = document.querySelectorAll('#menu ul');
+				console.log(nodes);
+				for(let i=0; i<nodes.length; i++){
+					nodes[i].classList.remove('hide');
+				}
+			}
+		});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<main>
+			<h1>テストみだし</h1>
+			<p>
+				あいうえおあいうえおあいうえお<br>
+				あいうえおあいうえお<br>
+				あいうえお<br>
+			</p>
+		</main>
+		<nav id="menu">
+			<ul>
+				<li>あいうえお</li>
+				<li>あいうえお <button class="menu">開く</button></li>
+				<ul id="sub" class="hide">
+					<li>あいうえお</li>
+					<li>あいうえお</li>
+					<li>あいうえお</li>
+				</ul>
+				<li>あいうえお</li>
+				<li>あいうえお</li>
+				<ul id="sub2" class="hide">
+					<li>あいうえお</li>
+					<li>あいうえお</li>
+					<li>あいうえお</li>
+				</ul>
+				<li>あいうえお</li>
+				<li>あいうえお</li>
+			</ul>
+		</nav>
+	</div>
+</body>
+</html>

@@ -6,21 +6,29 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Scroll</title>
 	<style>
-		body, #wrapper {
-			max-width: 100%;
+		body {
+			margin: 0;
+		}
+		body {
+			width: 100%;
 		}
 		#menu {
 			background-color: antiquewhite;
 			height: 44px;
 			white-space: nowrap;
-			overflow-y: hidden;
 			overflow-x: scroll;
-			scrollbar-width: none;
-			/* vertical-align: middle;
-			display: table-cell; */
+			/* scrollbar-width: none; */
 		}
-		#menu::-webkit-scrollbar{
+		/* #menu::-webkit-scrollbar{
 			display: none;
+		} */
+		#flex {
+			display: flex;
+			align-items: center;
+			background-color: aquamarine;
+			overflow-x: scroll;
+			height: 44px;
+			white-space: nowrap;
 		}
 	</style>
 </head>
@@ -32,6 +40,14 @@
 			table-cellにすると幅が100%を超過してはみ出してしまう。
 			table-cellにすると幅が100%を超過してはみ出してしまう。
 			table-cellにすると幅が100%を超過してはみ出してしまう。
+		</nav>
+		<nav id="flex">
+			<div class="item">item Flexにすれば垂直中央寄せにできる</div>
+			<div class="item">item Flexにすれば垂直中央寄せにできる</div>
+			<div class="item">item Flexにすれば垂直中央寄せにできる</div>
+			<div class="item">item Flexにすれば垂直中央寄せにできる</div>
+			<div class="item">item Flexにすれば垂直中央寄せにできる</div>
+			<div class="item">item Flexにすれば垂直中央寄せにできる</div>
 		</nav>
 	</div>
 	
