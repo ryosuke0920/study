@@ -1,0 +1,21 @@
+@use "base";
+
+%headers-area {
+	background-color: base.$main-color;
+	color: base.$font-color;
+	padding: base.$space;
+}
+
+#header {
+	@extend %headers-area;
+}
+
+#footer {
+	@extend %headers-area;
+	text-align: center;
+}
+
+.breadcrumbs {
+	padding: base.$half-space;
+	@include base.small;
+}

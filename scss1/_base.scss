@@ -1,0 +1,72 @@
+$base-color: #FFF;
+$font-color: #222;
+$main-color: #00ba7b;
+$link-color: #3e48bc;
+
+$half-space: 0.5rem;
+$space: 1rem;
+
+@mixin big($size: 2em) {
+	font-size: $size;
+}
+@mixin small($size: 0.8em) {
+	font-size: $size;
+}
+
+:root {
+	color: $font-color;
+	background-color: $base-color;
+	font-size: 16px;
+}
+
+body {
+	margin: 0;
+}
+
+h1,
+h2,
+p {
+	margin: 0;
+	margin-top: $space;
+	margin-bottom: $space;
+}
+
+%anchor {
+	text-decoration: none;
+	color: $link-color;
+} 
+a:link {
+	@extend %anchor;
+}
+a:visited {
+	@extend %anchor;
+}
+a:hover {
+	@extend %anchor;
+}
+a:active {
+	@extend %anchor;
+}
+
+article {
+	padding: $space;
+
+	> :first-child {
+		margin-top: 0;
+	}
+	
+	> h1 {
+		border-bottom: solid 2px $font-color;
+		
+		&:first-letter {
+			@include big(3em);
+			color: $base-color;
+			background-color: $font-color;
+		}
+	}
+}
+
+
+section>h1:first-letter {
+	@include big;
+}
