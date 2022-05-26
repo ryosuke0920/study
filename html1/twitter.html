@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Twitter</title>
+</head>
+<body>
+
+	<article>
+		<h1>Twitter シェアボタン</h1>
+		<p>	https://publish.twitter.com/?buttonType=TweetButton&widget=Button
+	
+		</p>
+		<section>
+			<h1>デフォルト＋日本語選択</h1>
+			<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-lang="ja" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		</section>
+		<section>
+			<h1>デフォルト＋日本語選択＋data-text:""</h1>
+			<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="ツイート" data-lang="ja" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		</section>
+		<section>
+			<h1>デフォルト＋日本語選択＋URL指定</h1>
+			<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-url="https://www.google.co.jp" data-lang="ja" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		</section>
+		<section>
+			<h1>デフォルト＋日本語選択＋URL指定＋直後にdata-urlを変更</h1>
+			<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-lang="ja" data-show-count="false">これは何か？</a><script>
+				const script = document.currentScript;
+				const a = script.previousElementSibling;
+				let url = window.location.href;
+				let start = url.indexOf('?');
+				url = url.substring(0, start);
+				a.setAttribute('data-url', url);
+			</script>
+			<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		</section>
+	</article>
+</body>
+</html>
