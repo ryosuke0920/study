@@ -1,21 +1,65 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Your Website Title</title>
-<!-- You can use Open Graph tags to customize link previews.
+	<title>Your Website Title</title>
+	<!-- You can use Open Graph tags to customize link previews.
 Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
-<meta property="og:url"           content="https://www.your-domain.com/your-page.html" />
-<meta property="og:type"          content="website" />
-<meta property="og:title"         content="Your Website Title" />
-<meta property="og:description"   content="Your description" />
-<meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
+	<meta property="og:url" content="https://www.your-domain.com/your-page.html" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Your Website Title" />
+	<meta property="og:description" content="Your description" />
+	<meta property="og:image" content="https://www.your-domain.com/path/image.jpg" />
 </head>
+
 <body>
 
 	<div id="fb-root"></div>
-	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v13.0" nonce="uzfhG9h7"></script>
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v13.0"
+		nonce="uzfhG9h7"></script>
 
-	<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">シェア</a></div>
+	<div>前回そのまま</div>
+	<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"
+		data-size="small"><a target="_blank"
+			href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"
+			class="fb-xfbml-parse-ignore">シェア</a></div>
+
+	<div>data-hrefを最初から最後までつけない</div>
+	<div class="fb-share-button" data-layout="button" data-size="small">シェア</div>
+
+	<div>すぐ下のscriptタグでdata-hrefをyahooに変更する</div>
+	<div class="fb-share-button" data-layout="button" data-size="small">シェア</div>
+	<script>
+		(() => {
+			const node = document.currentScript;
+			const button = node.previousElementSibling;
+			button.setAttribute('data-href', 'https://www.yahoo.co.jp/');
+		})();
+	</script>
+
+	<div>すぐ下のscriptタグでアドレスバーのURLを取得してパラメータを削除してdata-hrefに</div>
+	<div class="fb-share-button" data-layout="button" data-size="small">シェア</div>
+	<script>
+		(() => {
+			const node = document.currentScript;
+			const button = node.previousElementSibling;
+			const url = document.location.href;
+			const start = url.indexOf('?');
+			console.log(start);
+			const new_url = url.substr(0, start);
+			button.setAttribute('data-href', new_url);
+		})();
+	</script>
+
+	<div>jsで10秒後にdata-hrefをgoogle変更する（反映されない）</div>
+	<div id="hogehoge" class="fb-share-button" data-layout="button" data-size="small">シェア</div>
+	<script>
+		setTimeout(() => {
+			const button = document.querySelector('#hogehoge');
+			button.setAttribute('data-href', 'https://www.google.com/');
+		}, 10000);
+	</script>
 
 </body>
+
 </html>
