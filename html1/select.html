@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Select</title>
+	<script>
+		window.addEventListener('change', e=>{
+			if(e.target.id=='select') {
+				console.log("change select.");
+				console.log("e.target.value is " + e.target.value);
+			}
+		})
+	</script>
+</head>
+<body>
+	<button id="button">おす</button>
+	<label for="select">12345</label>
+	<select name="select" id="select">
+		<option value="1">1ページ</option>
+		<option value="2">2ページ</option>
+		<option value="3">3ページ</option>
+		<option value="4">4ページ</option>
+		<option>5ページ目/全99ページ中</option>
+		<option value="6">6ページ</option>
+		<option value="7">7ページ</option>
+		<option value="8">8ページ</option>
+		<option value="9">9ページ</option>
+	</select>
+</body>
+</html>
