@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="jquery-ui-1.13.1.custom/jquery-ui.min.css">
+	<script src="jquery-ui-1.13.1.custom/external/jquery/jquery.js"></script>
+	<script src="jquery-ui-1.13.1.custom/jquery-ui.min.js"></script>
+	<title>jQuery UI Select Menu</title>
+	<style>
+		select::before {
+			content: "before";
+		}
+		select::after {
+			content: "after";
+		}
+	</style>
+</head>
+<body>
+	<select>
+		<option>1ページ</option>
+		<option>2ページ</option>
+		<option>3ページ</option>
+		<option>4ページ</option>
+		<option selected disabled>5ページ目／全99ページ</option>
+		<option>6ページ</option>
+		<option>7ページ</option>
+		<option>8ページ</option>
+	</select>
+	<br>
+	<select class="jui-select" style="border: none; maring: 0; padding: 0;">
+		<option>1</option>
+		<option>2</option>
+		<option>3</option>
+		<option>4</option>
+	</select>
+	<script>
+		$('.jui-select').selectmenu();
+	</script>	
+</body>
+</html>
