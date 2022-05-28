@@ -1,32 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Select</title>
+	<style>
+		.normalize {
+			background-color: inherit;
+			border: none;
+			margin: 0;
+			padding: 0;
+			appearance: none;
+		}
+
+		#select3 {
+			appearance: auto;
+			color: blue;
+		}
+
+		#select3 option {
+			all: unset;
+		}
+
+		#select2 optgroup {}
+
+		#select2 option:nth-child(odd) {}
+
+		#select2 option:nth-child(even) {}
+
+		#select2 option.g1 {}
+
+		#selecte2 option:selected {}
+
+		#selecte2 option:hover {}
+	</style>
 	<script>
-		window.addEventListener('change', e=>{
-			if(e.target.id=='select') {
+		window.addEventListener('change', e => {
+			if (e.target.id == 'select') {
 				console.log("change select.");
 				console.log("e.target.value is " + e.target.value);
 			}
 		})
 	</script>
 </head>
+
 <body>
-	<button id="button">おす</button>
-	<label for="select">12345</label>
-	<select name="select" id="select">
-		<option value="1">1ページ</option>
-		<option value="2">2ページ</option>
-		<option value="3">3ページ</option>
-		<option value="4">4ページ</option>
-		<option>5ページ目/全99ページ中</option>
-		<option value="6">6ページ</option>
-		<option value="7">7ページ</option>
-		<option value="8">8ページ</option>
-		<option value="9">9ページ</option>
-	</select>
+	<section>
+		<h1>select3</h1>
+		<div>
+			<select id="select3" class="normalize">
+				<optgroup label="軍人は忠節を尽くすを本分とせよ">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+				</optgroup>
+			</select>
+		</div>
+	</section>
+	<section>
+		<h1>select2</h1>
+		<div>
+			<select id="select2" class="normalize">
+				<optgroup label="軍人は忠節を尽くすを本分とせよ">
+					<option class="g1">1</option>
+					<option class="g1">2</option>
+					<option class="g1">3</option>
+				</optgroup>
+				<optgroup label="軍人は礼儀を正しくすべし">
+					<option>4</option>
+					<option>5</option>
+					<option>6</option>
+				</optgroup>
+				<optgroup label="軍人は武勇を尊ぶべし">
+				</optgroup>
+				<optgroup>
+					<option>7</option>
+				</optgroup>
+				<optgroup>
+				</optgroup>
+				<optgroup>
+					<option>8</option>
+				</optgroup>
+			</select>
+		</div>
+		<section>
+			<h1>not work</h1>
+			<ul>
+				<li>css option:hover</li>
+				<li>css option:selected</li>
+			</ul>
+		</section>
+	</section>
+
+	<section>
+		<h1>select1</h1>
+		<p>
+			<button id="button">おす</button>
+			<label for="select">12345</label>
+		</p>
+		<div>
+			<select name="select" id="select">
+				<option value="1">1ページ</option>
+				<option value="2">2ページ</option>
+				<option value="3">3ページ</option>
+				<option value="4">4ページ</option>
+				<option>5ページ目/全99ページ中</option>
+				<option value="6">6ページ</option>
+				<option value="7">7ページ</option>
+				<option value="8">8ページ</option>
+				<option value="9">9ページ</option>
+			</select>
+		</div>
+	</section>
 </body>
+
 </html>
