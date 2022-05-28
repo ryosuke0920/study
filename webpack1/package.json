@@ -23,6 +23,8 @@
     "webpack-dev-server": "^4.8.1"
   },
   "dependencies": {
+    "jquery": "^3.6.0",
+    "jquery-ui": "^1.13.1",
     "swiper": "^8.1.4"
   }
 }

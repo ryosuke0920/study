@@ -1,12 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
 	mode: 'development',
 	entry: {
 		index: './src/js/index.js',
 		swiper: './src/js/swiper.js',
-		jquery: './src/js/jquery.js',
+		myjquery: './src/js/myjquery.js',
 	},
 	devtool: 'inline-source-map',
 	plugins: [
@@ -21,9 +22,13 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			template: 'src/jquery.html',
-			filename: 'j.html',
-			chunks: ['jquery'],
+			filename: 'myjquery.html',
+			chunks: ['myjquery'],
 		}),
+		new webpack.ProvidePlugin({
+			'$': 'jquery',
+			'jQuery': 'jquery',
+		})
 	],
 	output: {
 		filename: '[name].bundle.js',
