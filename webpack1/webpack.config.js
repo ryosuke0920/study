@@ -4,8 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
 	mode: 'development',
 	entry: {
-		index: './src/index.js',
-		swiper: './src/swiper.js',
+		index: './src/js/index.js',
+		swiper: './src/js/swiper.js',
+		jquery: './src/js/jquery.js',
 	},
 	devtool: 'inline-source-map',
 	plugins: [
@@ -17,6 +18,11 @@ module.exports = {
 			template: 'src/swiper.html',
 			filename: 'swiper.html',
 			chunks: ['swiper'],
+		}),
+		new HtmlWebpackPlugin({
+			template: 'src/jquery.html',
+			filename: 'j.html',
+			chunks: ['jquery'],
 		}),
 	],
 	output: {

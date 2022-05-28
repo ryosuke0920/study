@@ -1,4 +1,4 @@
-import './style.scss';
+import '../scss/style.scss';
 
 
 const ROOT = document.querySelector(':root');
