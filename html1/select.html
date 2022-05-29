@@ -6,6 +6,22 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Select</title>
+	<script>
+		window.addEventListener('load', e => {
+			document.querySelector('#button3').addEventListener('click', e => {
+				document.querySelector('#select3').click();
+			});
+			document.querySelector('#select3').addEventListener('click', e => {
+				console.log('#select3 click.');
+			});
+			document.querySelectorAll('#select3 option').forEach(node => {
+				node.addEventListener('click', e => {
+					console.log('#select3 option(' + e.target.value + ') click.');
+				});
+			});
+			console.log(document.querySelectorAll('hoge'));
+		});
+	</script>
 	<style>
 		.normalize {
 			background-color: inherit;
@@ -16,25 +32,45 @@
 		}
 
 		#select3 {
-			appearance: auto;
-			color: blue;
+			border: solid 1px black;
 		}
 
-		#select3 option {
-			all: unset;
+		.select-wrap {
+			display: inline-block;
+			position: relative;
 		}
 
-		#select2 optgroup {}
+		.select-wrap select {
+			cursor: pointer;
+			padding-right: 2em;
+		}
 
-		#select2 option:nth-child(odd) {}
+		.select-wrap::after {
+			position: absolute;
+			top: 4px;
+			right: 6px;
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			content: "";
+			pointer-events: none;
+			border-bottom: solid 3px #666;
+			border-right: solid 3px #666;
+			transform: rotate(45deg);
+		}
 
-		#select2 option:nth-child(even) {}
+		#select2 option {
+			color: green;
+		}
 
-		#select2 option.g1 {}
+		#select2 option[selected] {
+			color: red;
+		}
 
-		#selecte2 option:selected {}
-
-		#selecte2 option:hover {}
+		#select2 option[disabled] {
+			background-color: darkgrey;
+			color: white;
+		}
 	</style>
 	<script>
 		window.addEventListener('change', e => {
@@ -50,13 +86,16 @@
 	<section>
 		<h1>select3</h1>
 		<div>
-			<select id="select3" class="normalize">
-				<optgroup label="軍人は忠節を尽くすを本分とせよ">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-				</optgroup>
-			</select>
+			<p><button id="button3">ボタンを押すと#select3のclick()を呼び出す</button></p>
+			<span class="select-wrap">
+				<select id="select3" class="normalize">
+					<optgroup label="軍人は信義を重んずべし">
+						<option>111111</option>
+						<option>22222</option>
+						<option>3</option>
+					</optgroup>
+				</select>
+			</span>
 		</div>
 	</section>
 	<section>
@@ -64,9 +103,9 @@
 		<div>
 			<select id="select2" class="normalize">
 				<optgroup label="軍人は忠節を尽くすを本分とせよ">
-					<option class="g1">1</option>
-					<option class="g1">2</option>
-					<option class="g1">3</option>
+					<option class="g1" selected>1 selected</option>
+					<option class="g1" disabled>2 disabled</option>
+					<option class="g1" hidden>3 hidden</option>
 				</optgroup>
 				<optgroup label="軍人は礼儀を正しくすべし">
 					<option>4</option>
@@ -86,10 +125,11 @@
 			</select>
 		</div>
 		<section>
-			<h1>not work</h1>
+			<h1>not working</h1>
 			<ul>
 				<li>css option:hover</li>
 				<li>css option:selected</li>
+				<li>css option height & width</li>
 			</ul>
 		</section>
 	</section>
