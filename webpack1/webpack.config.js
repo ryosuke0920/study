@@ -1,5 +1,6 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
@@ -25,9 +26,18 @@ module.exports = {
 			filename: 'myjquery.html',
 			chunks: ['myjquery'],
 		}),
+		new HtmlWebpackPlugin({
+			template: 'src/html.html',
+			filename: 'html.html',
+		}),
 		new webpack.ProvidePlugin({
 			'$': 'jquery',
 			'jQuery': 'jquery',
+		}),
+		new CopyWebpackPlugin({
+			patterns: [
+				{from: "src/img", to: "img"},
+			]
 		})
 	],
 	output: {
@@ -48,12 +58,17 @@ module.exports = {
 					'css-loader',
 					'sass-loader'
 				],
+			},
+			{
+				test: /\.(png|svg|jpg|jpeg|gif)$/i,
+				type: 'asset/resource',
 			}
 		],
 	},
 	devServer: {
 		host: '0.0.0.0',
-		static: './dist',
+		// static: './dist',
+		liveReload: false,
 	},
 	// optimization: {
 	// 	runtimeChunk: 'single',
