@@ -1,28 +1,55 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <title>Life Check Sheet</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="">
-  </head>
-  <body>
-    <header>
-      <h1>Header</h1>
-    </header>
-    <main>
-      <div>
-        <h1>Life Check Sheet</h1>
-        <p class="size8">font size 8px あいうえお日本語</p>
-        <p class="size16">font size 16px あいうえお日本語</p>
-        <p class="size24">font size 24px あいうえお日本語</p>
-        <p class="size32">font size 32px あいうえお日本語</p>  
+
+<head>
+  <meta charset="UTF-8">
+  <title>Life Check Sheet</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="">
+</head>
+<script>
+  window.addEventListener('load', e => {
+    console.log('load.');
+  })
+  window.addEventListener('DOMContentLoaded', e => {
+    console.log('DOMContentLoaded.');
+  })
+  console.log("head.");
+</script>
+
+<body>
+  <main>
+    <section>
+      <h1>Swiper</h1>
+
+      <!-- Slider main container -->
+      <div class="swiper mycards">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide">Slide 1</div>
+          <div class="swiper-slide">Slide 2</div>
+          <div class="swiper-slide">Slide 3</div>
+          ...
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
       </div>
-    </main>
-    <footer>
-      Footer
-    </footer>
-  </body>
+
+    </section>
+  </main>
+  <script>
+    console.log("/body.");
+  </script>
+</body>
+
 </html>
