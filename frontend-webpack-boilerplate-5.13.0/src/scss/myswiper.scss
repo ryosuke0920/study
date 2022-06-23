@@ -1,0 +1,25 @@
+.myswiper {
+	.wrapper {
+		padding: 0;
+	}
+
+	$width-button: 50px;
+
+	.swiper-slide {
+
+		&:nth-child(even) {
+			background-color: aqua;
+		}
+
+		&:nth-child(odd) {
+			background-color: peru;
+		}
+	}
+
+	.swiper {
+		width: 100%;
+		height: 200px;
+		padding-left: $width-button;
+		padding-right: $width-button;
+	}
+}
