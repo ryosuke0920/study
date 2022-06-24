@@ -1,9 +1,29 @@
 .myswiper {
-	.wrapper {
-		padding: 0;
+	$padding-article: 20px;
+	$width-button: 50px;
+
+	.container-article {
+		padding-left: $padding-article;
+		padding-right: $padding-article;
+		max-width: 600px;
+		margin: auto;
+		@media (min-width:900px){
+			max-width: 900px;
+		}
 	}
 
-	$width-button: 50px;
+	.container-swiper {
+		position: relative;
+		@media (min-width:600px){
+			padding-left: $padding-article;
+			padding-right: $padding-article;
+			max-width: 600px;
+			margin: auto;
+		}
+		@media (min-width:900px){
+			max-width: 900px;
+		}
+	}
 
 	.swiper-slide {
 
@@ -17,9 +37,22 @@
 	}
 
 	.swiper {
-		width: 100%;
-		height: 200px;
-		padding-left: $width-button;
-		padding-right: $width-button;
+		height: 100px;
+		padding-left: $padding-article;
+		padding-right: $padding-article;
+		@media (min-width:600px){
+			padding-left: 0;
+			padding-right: 0;
+		}
+		@media (min-width:900px){
+			width: calc(100% - 60px);
+		}
+	}
+
+	.swiper-button {
+		display: none;
+		@media (min-width:900px){
+			display: block;
+		}
 	}
 }
