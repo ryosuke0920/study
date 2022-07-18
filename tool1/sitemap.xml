@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>http://ryosuke-ohta.s3-website-ap-northeast-1.amazonaws.com/sitemap-root.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>http://ryosuke-ohta.s3-website-ap-northeast-1.amazonaws.com/sitemap-blog.xml</loc>
+  </sitemap>
+</sitemapindex>

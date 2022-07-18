@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>直交表</title>
+	<script>
+		(function(){
+			window.addEventListener('load', (e)=>{
+				console.log("hello.");
+			});
+		})();
+	</script>
+</head>
+<body>
+	<template id="input-tempalte">
+		<section>
+			<h1><input class="factor-name" type="text"></h1>
+			<textarea class="factor-value"></textarea>
+		</section>
+	</template>
+	<template id="table-tempalte">
+		<table>
+		</table>
+	</template>
+	<template id="row-tempalte">
+		<tr></tr>
+	</template>
+	<template id="data-tempalte">
+		<td></td>
+	</template>
+	<main>
+		<h1>直交表 自動生成</h1>
+		<div class="input--area">
+			<div class="input--wrapper">
+			</div>
+		</div>
+		<div class="table--area">
+		</div>
+	</main>
+</body>
+</html>
