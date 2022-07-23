@@ -1,1 +1,1 @@
-Sitemap: http://ryosuke-ohta.s3-website-ap-northeast-1.amazonaws.com/sitemap.xml
+Sitemap: https://d1n0if44u6skd4.cloudfront.net/sitemap.xml
